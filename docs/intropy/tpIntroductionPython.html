@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Travaux pratiques - Introduction à Python &#8212; Documentation rcp216 0.0</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/translations.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Recherche" href="../search.html" />
+    <link rel="prev" title="Welcome to rcp216’s documentation!" href="../index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="travaux-pratiques-introduction-a-python">
+<span id="chap-tpintroductionpython"></span><h1>Travaux pratiques - Introduction à Python<a class="headerlink" href="#travaux-pratiques-introduction-a-python" title="Lien permanent vers ce titre">¶</a></h1>
+<p>(correspond à 1 séance de TP)</p>
+<div class="notebook docutils container">
+<img alt="intropy/_static/jupyter_logo.png" class="svg-inline" src="intropy/_static/jupyter_logo.png" />
+<p><a class="reference external" href="jupyter/tpIntroductionPython.ipynb">Cahier Jupyter</a></p>
+</div>
+<p>Références externes utiles :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://scikit-learn.org/stable/index.html">Site scikit-learn</a></p></li>
+<li><p><a class="reference external" href="https://www.python.org">Site du langage Python</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/fr/3/">Documentation de Python en français</a></p></li>
+</ul>
+</div></blockquote>
+<p>Les travaux pratiques emploient le langage Python et cette première séance a pour premier objectif de vous le faire découvrir. Vous pouvez, par ailleurs, trouver de (très) nombreux tutoriels Python sur Internet, en français ou en anglais (ou d’autres langues).</p>
+<p>Parmi les caractéristiques notables du langage Python nous pouvons mentionner :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>langage de programmation objet où tout (ou presque) est objet ;</p></li>
+<li><p>typage fort : la conformité aux types est vérifiée, les conversions implicites de type ne sont pas autorisées ;</p></li>
+<li><p>typage dynamique : le type est déterminé à l’exécution, une déclaration explicite du type d’une variable n’est pas nécessaire ;</p></li>
+<li><p>gestion automatique de la mémoire par un mécanisme de « ramasse-miettes » ;</p></li>
+<li><p><strong>sensible à l’indentation</strong> : les structures de contrôle n’emploient pas de délimiteurs (comme <code class="docutils literal notranslate"><span class="pre">begin</span></code> et <code class="docutils literal notranslate"><span class="pre">end</span></code>, ou <code class="docutils literal notranslate"><span class="pre">{</span></code> et <code class="docutils literal notranslate"><span class="pre">}</span></code>), tout est basé sur l’indentation (par ex. multiple de 4 espaces)</p></li>
+<li><p>sensible à la casse : différence entre majuscules et minuscules.</p></li>
+</ul>
+</div></blockquote>
+<p>Si vous maîtrisez déjà les bases de Python, vous pouvez aller directement à la séance <a class="reference external" href="tpIntroductionScikitLearn">d’introduction à Scikit-learn</a>.</p>
+<p>En complément de cette introduction, vous pouvez suivre le <a class="reference external" href="https://docs.python.org/fr/3/tutorial/">tutoriel Python officiel en français</a>.</p>
+<section id="python-2-ou-python-3">
+<h2>Python 2 ou Python 3 ?<a class="headerlink" href="#python-2-ou-python-3" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Depuis janvier 2020, la version 2 du langage Python n’est <a class="reference external" href="https://www.python.org/doc/sunset-python-2/">plus maintenue</a>. scikit-learn ayant décidé d’abandonner le support de Python 2 depuis sa version 0.20, nous emploierons et vous recommendons Python 3 dans les TP.</p>
+</section>
+<section id="interpreteur-python">
+<h2>Interpréteur Python<a class="headerlink" href="#interpreteur-python" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Python est un langage interprété pouvant s’exécuter sur diverses plateformes. Vous pouvez par exemple</p>
+<p>Si vous travaillez sur les machines des salles informatiques du CNAM, vous n’avez rien à faire, tout est déjà installé.</p>
+<p>Si vous réalisez ces TP sur votre machine personnelle, vous pouvez consulter <a class="reference external" href="installationScikitLearn">les instructions d’installation de scikit-learn</a> pour installer les bons logiciels.</p>
+<p>Il faut a minima un interpréteur Python (accessible via la commande <code class="docutils literal notranslate"><span class="pre">python3</span></code> dans un terminal Linux/MacOS ou une console Windows). Pour plus de confort, nous recommandons également un environnement de programmation tel que Spyder ou Jupyter.</p>
+</section>
+<section id="documentation-aide-en-ligne-de-commande">
+<h2>Documentation, aide en ligne de commande<a class="headerlink" href="#documentation-aide-en-ligne-de-commande" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L’interpréteur Python peut vous renvoyer de la documentation et de l’aide de différentes façons.</p>
+<p>Par exemple, définissons un couple et examinons-le. La fonction native <code class="docutils literal notranslate"><span class="pre">print</span></code> permet d’afficher le contenu d’une variable :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Si l’on veut savoir quelles sont les méthodes de l’objet <code class="docutils literal notranslate"><span class="pre">t</span></code>, on peut utiliser la fonction <code class="docutils literal notranslate"><span class="pre">dir</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">dir</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="c1"># Affiche [&#39;__add__&#39;, &#39;__class__&#39;, ... &#39;count&#39;, &#39;index&#39;]</span>
+</pre></div>
+</div>
+<p>Pour avoir plus d’explications sur ces méthodes, il est possible d’appeler la fonction <code class="docutils literal notranslate"><span class="pre">help</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="c1"># Affiche :</span>
+<span class="c1"># Help on tuple object:</span>
+<span class="c1">#</span>
+<span class="c1"># class tuple(object)</span>
+<span class="c1">#  |  tuple() -&gt; empty tuple</span>
+<span class="c1">#  |  tuple(iterable) -&gt; tuple initialized from iterable&#39;s items</span>
+<span class="c1">#  |</span>
+<span class="c1">#  |  If the argument is a tuple, the return value is the same object.</span>
+<span class="c1">#  |</span>
+<span class="c1">#  |  Methods defined here:</span>
+<span class="c1">#  |</span>
+<span class="c1">#  |  __add__(self, value, /)</span>
+<span class="c1">#  |      Return self+value.</span>
+<span class="c1">#  |</span>
+<span class="c1">#  | ...</span>
+<span class="c1">#  |</span>
+<span class="c1">#  |  __getattribute__(self, name, /)</span>
+</pre></div>
+</div>
+<p>En ligne de commande, vous pouvez appuyer sur la touche <code class="docutils literal notranslate"><span class="pre">Espace</span></code> pour passer à la page suivante et sur la touche <code class="docutils literal notranslate"><span class="pre">q</span></code> pour quitter l’aide (comme pour la commande <code class="docutils literal notranslate"><span class="pre">man</span></code> de linux).</p>
+<p>Une fois entré dans l’aide avec <code class="docutils literal notranslate"><span class="pre">help()</span></code>, il est possible de demander une aide spécifique, par exemple d’avoir la liste des modules Python présents :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">()</span>
+<span class="c1"># help&gt; modules</span>
+<span class="c1"># ...</span>
+<span class="c1"># help&gt; quit</span>
+</pre></div>
+</div>
+<p>Examinez également les résultats des appels suivants (il y a bien d’autres outils d”<strong>introspection</strong> pour Python) :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<span class="c1"># Affiche : &lt;class &#39;tuple&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Entrez</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question :</p>
+<p>Est-ce le même <code class="docutils literal notranslate"><span class="pre">id</span></code> que plus haut ? Que s’est-il passé ?</p>
+</div>
+<div class="admonition-note admonition">
+<p class="admonition-title">Note</p>
+<p>Les lignes commençant par <code class="docutils literal notranslate"><span class="pre">#</span></code> sont des <strong>commentaires</strong>. Elles ne sont pas interprétées par Python mais servent à expliquer ou documenter le code.
+Il est possible d’écrire des commentaires multilignes en les encadrant par <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>.</p>
+</div>
+</section>
+<section id="syntaxe">
+<h2>Syntaxe<a class="headerlink" href="#syntaxe" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L’affectation de valeurs à une variable (ou l’association d’objets à des noms) est faite en utilisant le signe <code class="docutils literal notranslate"><span class="pre">=</span></code>. Pour la vérification de l’égalité on employe deux signes <code class="docutils literal notranslate"><span class="pre">=</span></code> collés, <code class="docutils literal notranslate"><span class="pre">==</span></code>. Les commentaires sur une seule ligne commencent par <code class="docutils literal notranslate"><span class="pre">#</span></code>, les commentaires multi-lignes commencent et se terminent par <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>.</p>
+<section id="types-de-base">
+<h3>Types de base<a class="headerlink" href="#types-de-base" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Différents types de base sont disponibles dans Python. Pour la plupart de ces types de base, dont <code class="docutils literal notranslate"><span class="pre">bool</span></code> (booléen), <code class="docutils literal notranslate"><span class="pre">int</span></code> (entier), <code class="docutils literal notranslate"><span class="pre">float</span></code> (réel), <code class="docutils literal notranslate"><span class="pre">str</span></code> (chaîne de caractères), <code class="docutils literal notranslate"><span class="pre">tuple</span></code> (vecteur), les « variables » qui les possèdent sont <strong>immuables</strong> (<em>immutable</em>) : il n’est pas possible de changer leur valeur ! En revanche, il est possible de donner le même <em>nom</em> de variable à une nouvelle donnée, comme dans l’exemple ci-dessus que nous reprenons :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;3&quot;</span><span class="p">,</span><span class="s2">&quot;4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">id</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Lors de ce qui ressemble à l’affectation d’une nouvelle valeur à une variable, <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">(&quot;3&quot;,&quot;4&quot;)</span></code>, nous avons en fait donné le même nom <code class="docutils literal notranslate"><span class="pre">t</span></code> à un nouvel objet <code class="docutils literal notranslate"><span class="pre">(&quot;3&quot;,&quot;4&quot;)</span></code>, les identifiants de l’ancien <code class="docutils literal notranslate"><span class="pre">t</span></code> et du nouveau <code class="docutils literal notranslate"><span class="pre">t</span></code> sont donc naturellement différents.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">entier</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">reel</span> <span class="o">=</span> <span class="mf">3.14</span>
+<span class="n">chaine</span> <span class="o">=</span> <span class="s2">&quot;pi&quot;</span>
+</pre></div>
+</div>
+<p>Un <em>tuple</em> peut être composé de données de types différents :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="n">entier</span><span class="p">,</span> <span class="n">reel</span><span class="p">,</span> <span class="n">chaine</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="c1"># (1, 3.14, &#39;pi&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+<span class="c1"># &lt;class &#39;tuple&#39;&gt;</span>
+</pre></div>
+</div>
+<p>Nous remarquerons enfin que les délimiteurs d’une chaîne de caractères peuvent être soit les <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>, soit les <code class="docutils literal notranslate"><span class="pre">'</span></code> ; ce qui compte c’est la cohérence entre le début et la fin de la chaîne :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;toto&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="c1"># &#39;toto&#39;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;toto&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="c1"># &#39;toto&#39;</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s2">&quot;toto&#39; # Erreur, il faut utiliser les mêmes guillemets pour ouvrir et fermer la chaîne !!</span>
+</pre></div>
+</div>
+</section>
+<section id="listes">
+<h3>Listes<a class="headerlink" href="#listes" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les types de base modifiables (<em>mutable</em>) sont les <strong>listes</strong> et les <strong>dictionnaires</strong>. Une liste est un tableau unidimensionnel, dont les éléments peuvent avoir des types différents (et peuvent être des listes à leur tour) ; le premier élément est identifié par l’indice <code class="docutils literal notranslate"><span class="pre">0</span></code>, le dernier par l’indice <code class="docutils literal notranslate"><span class="pre">-1</span></code>. Les exemples ci-dessous illustrent également l’utilisation des <code class="docutils literal notranslate"><span class="pre">:</span></code> pour indiquer des intervalles d’indices. Ces mêmes règles concernant les indices sont valables pour les tuples.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="n">entier</span><span class="p">,</span> <span class="n">reel</span><span class="p">,</span> <span class="n">chaine</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="c1"># [1, 3.14, &#39;pi&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">liste</span><span class="p">))</span>
+<span class="c1"># &lt;class &#39;list&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1"># &#39;pi&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span> <span class="c1"># Erreur !</span>
+</pre></div>
+</div>
+<p>Les indices négatifs permettent d’accéder aux éléments en commençant par la fin de la liste :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="c1"># &#39;pi&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="c1"># 3.14</span>
+</pre></div>
+</div>
+<p>Le symbole <code class="docutils literal notranslate"><span class="pre">:</span></code> permet d’effectuer du <em>slicing</em>, c’est-à-dire de découper des sous-listes :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[:</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Extrait la sous-liste de tous les éléments jusqu&#39;à 1 (exclu)</span>
+<span class="c1"># [1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Extrait la sous-liste de tous les éléments jusqu&#39;à 2 (exclu)</span>
+<span class="c1"># [1, 3.14]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># Extrait la sous-liste jusqu&#39;au dernier élément (exclu)</span>
+<span class="c1"># [1, 3.14]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="c1"># [1, 3.14, &#39;pi&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">:])</span> <span class="c1"># Extrait la sous-liste à partir du premier élément (inclus)</span>
+<span class="c1"># [1, 3.14, &#39;pi&#39;]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="c1"># Extrait la sous-liste à partir du deuxième élément (inclus)</span>
+<span class="c1"># [3.14, &#39;pi&#39;]</span>
+</pre></div>
+</div>
+<p>Les listes disposent de plusieurs méthodes utiles (regardez-les avec <code class="docutils literal notranslate"><span class="pre">help(liste)</span></code>), parmi lesquelles :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Concaténation de listes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span> <span class="o">+</span> <span class="n">liste</span><span class="p">)</span>
+<span class="c1"># [1, 3.14, &#39;pi&#39;, 1, 3.14, &#39;pi&#39;]</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Longueur d&#39;une liste</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Minimum et maximum d&#39;une liste</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">24</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">([</span><span class="mf">1.24</span><span class="p">,</span> <span class="o">-</span><span class="mf">12.0</span><span class="p">,</span> <span class="mf">5.99</span><span class="p">]))</span>
+
+<span class="c1"># Attention, erreur si les éléments ne sont pas comparables :</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">([</span><span class="s1">&#39;pi&#39;</span><span class="p">,</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># TypeError: &#39;&lt;&#39; not supported between instances of &#39;int&#39; and &#39;str&#39;</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Nombre d&#39;occurrences d&#39;un élément dans une liste</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mf">3.14</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">liste</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="mf">3.14</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tri d&#39;une liste en ordre croissant</span>
+<span class="n">liste</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Suppression d&#39;un élément de la liste</span>
+<span class="k">del</span> <span class="n">liste</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cherche la position de l&#39;élément dans la liste</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mf">3.14</span><span class="p">))</span>
+<span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mi">9</span><span class="p">))</span>
+<span class="c1"># 4</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Renverse une liste</span>
+<span class="n">liste</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="c1"># [12, 9, 7, 3.14, 3.14, 0]</span>
+</pre></div>
+</div>
+</section>
+<section id="dictionnaires">
+<h3>Dictionnaires<a class="headerlink" href="#dictionnaires" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les dictionnaires sont des tableaux associatifs, autrement dit des ensembles de paires <code class="docutils literal notranslate"><span class="pre">{clé</span> <span class="pre">:</span> <span class="pre">valeur}</span></code>, par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cours</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;RCP208&#39;</span> <span class="p">:</span> <span class="mi">2016</span><span class="p">,</span> <span class="s1">&#39;RCP209&#39;</span> <span class="p">:</span> <span class="mi">2017</span><span class="p">,</span> <span class="s1">&#39;RCP216&#39;</span> <span class="p">:</span> <span class="mi">2017</span> <span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cours</span><span class="p">)</span>
+<span class="c1"># {&#39;RCP216&#39;: 2017, &#39;RCP208&#39;: 2016, &#39;RCP209&#39;: 2017}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cours</span><span class="p">[</span><span class="s1">&#39;RCP209&#39;</span><span class="p">])</span>
+<span class="c1"># 2017</span>
+<span class="n">cours</span><span class="p">[</span><span class="s1">&#39;RCP210&#39;</span><span class="p">]</span>  <span class="c1"># Erreur ! La clé n&#39;existe pas</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># KeyError: &#39;RCP210&#39;</span>
+</pre></div>
+</div>
+<p>Il est possible de mélanger les types dans un dictionnaire (dans les clés et dans les valeurs), ainsi que d’avoir des valeurs qui sont des tuples ou des listes (ou des listes de listes, etc.) :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dico</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span> <span class="p">:</span> <span class="s1">&#39;toto&#39;</span><span class="p">,</span> <span class="s1">&#39;titi&#39;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span> <span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span> <span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">dico</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">1</span> <span class="p">:</span> <span class="s1">&#39;toto&#39;</span><span class="p">,</span> <span class="s1">&#39;titi&#39;</span> <span class="p">:</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span> <span class="p">:</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">]]}</span>
+</pre></div>
+</div>
+<p>Plusieurs méthodes spécifiques aux dictionnaires peuvent être utiles, par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Obtenir les clés du dictionnaire</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dico</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="c1"># dict_keys([&#39;titi&#39;, 1, 1000])</span>
+<span class="c1"># Obtenir les valeurs du dictionnaire</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dico</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="c1"># dict_values([10, &#39;toto&#39;, [(1, 2, 3), [&#39;A&#39;, &#39;b&#39;]]])</span>
+<span class="c1"># Obtenir les paires (clé, valeur)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dico</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+<span class="c1"># dict_items([(&#39;titi&#39;, 10), (1, &#39;toto&#39;), (1000, [(1, 2, 3), [&#39;A&#39;, &#39;b&#39;]])])</span>
+</pre></div>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question :</p>
+<p>Que retourne chacune de ces méthodes ?</p>
+</div>
+<p>Pour tenter de clarifier la différence entre ce qui est immuable et ce qui est modifiable, prenons l’exemple suivant :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">valeur</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="c1"># []</span>
+<span class="n">liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="c1"># [1]</span>
+<span class="n">meme_liste</span> <span class="o">=</span> <span class="n">liste</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meme_liste</span><span class="p">)</span>
+<span class="c1"># [1]</span>
+<span class="n">meme_liste</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">valeur</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+<span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="c1"># [1, 3]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">meme_liste</span><span class="p">)</span>
+<span class="c1"># [1, 3]</span>
+</pre></div>
+</div>
+<p>Comment expliquer les résultats ? Rappelons d’abord que les « variables » de type <code class="docutils literal notranslate"><span class="pre">int</span></code> sont immuables, alors que celles de type <code class="docutils literal notranslate"><span class="pre">list</span></code> sont modifiables.</p>
+<p>Dans la première ligne (<code class="docutils literal notranslate"><span class="pre">valeur</span> <span class="pre">=</span> <span class="pre">1</span></code>), une association est faite entre le <em>nom</em> <code class="docutils literal notranslate"><span class="pre">valeur</span></code> et un objet qui est l’entier <code class="docutils literal notranslate"><span class="pre">1</span></code>. La seconde ligne (<code class="docutils literal notranslate"><span class="pre">liste</span> <span class="pre">=</span> <span class="pre">[]</span></code>) fait une association entre le nom <code class="docutils literal notranslate"><span class="pre">liste</span></code> et un objet qui est une liste vide. L’appel de la méthode <code class="docutils literal notranslate"><span class="pre">append</span></code> dans <code class="docutils literal notranslate"><span class="pre">liste.append(valeur)</span></code> modifie cet objet liste vide en lui ajoutant l’objet désigné par le nom <code class="docutils literal notranslate"><span class="pre">valeur</span></code>. Dans <code class="docutils literal notranslate"><span class="pre">meme_liste</span> <span class="pre">=</span> <span class="pre">liste</span></code> on ajoute un nouveau nom pour l’objet désigné par <code class="docutils literal notranslate"><span class="pre">liste</span></code>.</p>
+<p>L’appel <code class="docutils literal notranslate"><span class="pre">meme_liste.append(3)</span></code> modifie l’objet désigné par <code class="docutils literal notranslate"><span class="pre">meme_liste</span></code> (et aussi par <code class="docutils literal notranslate"><span class="pre">liste</span></code>) en lui ajoutant l’objet <code class="docutils literal notranslate"><span class="pre">3</span></code> (un entier). Avec <code class="docutils literal notranslate"><span class="pre">valeur</span> <span class="pre">=</span> <span class="pre">2</span></code>, le nom <code class="docutils literal notranslate"><span class="pre">valeur</span></code> n’est plus associé à l’objet auquel il était associé avant (un entier <code class="docutils literal notranslate"><span class="pre">1</span></code>) mais à un nouvel objet (un entier <code class="docutils literal notranslate"><span class="pre">2</span></code>) ; cela ne peut avoir d’impact sur l’objet désigné par <code class="docutils literal notranslate"><span class="pre">liste</span></code> ou <code class="docutils literal notranslate"><span class="pre">meme_liste</span></code>, qui est une liste (vide au départ, ensuite un objet <code class="docutils literal notranslate"><span class="pre">1</span></code> lui a été ajouté, et enfin un objet <code class="docutils literal notranslate"><span class="pre">3</span></code>).</p>
+<p>Ceci devrait permettre de comprendre aussi le passage de paramètres aux <a class="reference internal" href="#fonctions"><span class="std std-ref">Fonctions, fonctions anonymes</span></a>.</p>
+</section>
+</section>
+<section id="structures-de-controle">
+<h2>Structures de contrôle<a class="headerlink" href="#structures-de-controle" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour le contrôle de l’exécution d’un programme il est possible d’utiliser les tests de conditions avec <code class="docutils literal notranslate"><span class="pre">if</span></code> / <code class="docutils literal notranslate"><span class="pre">elif</span></code> / <code class="docutils literal notranslate"><span class="pre">else</span></code> et les boucles <code class="docutils literal notranslate"><span class="pre">for</span></code> ou <code class="docutils literal notranslate"><span class="pre">while</span></code>. Remarquer l’utilisation de <code class="docutils literal notranslate"><span class="pre">:</span></code> avant les lignes qui exigent un niveau d’indentation supérieur (et <strong>obligatoire</strong> !).</p>
+<p>Les boucles <code class="docutils literal notranslate"><span class="pre">for</span></code> permettent de parcourir n’importe quel itérable, typiquement des listes :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">liste</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">valeur</span> <span class="ow">in</span> <span class="n">liste</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">valeur</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>
+        <span class="c1"># &quot;break&quot; quitte la boucle sans considérer &quot;else&quot;</span>
+        <span class="c1"># &quot;continue&quot; démarre l&#39;itération suivante</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">valeur</span><span class="p">,</span><span class="s1">&#39; : impaire&#39;</span><span class="p">)</span>
+
+<span class="c1">#1  : impaire</span>
+<span class="c1">#3  : impaire</span>
+<span class="c1">#5  : impaire</span>
+</pre></div>
+</div>
+<p>Les boucles <code class="docutils literal notranslate"><span class="pre">while</span></code> s’exécutent tant qu’une condition est vérifiée :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">i</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>Il n’y a pas d’équivalent de <code class="docutils literal notranslate"><span class="pre">switch</span></code> en Python, il faut employer <code class="docutils literal notranslate"><span class="pre">if</span></code> / <code class="docutils literal notranslate"><span class="pre">elif</span></code> / <code class="docutils literal notranslate"><span class="pre">else</span></code> :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">liste</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;liste[1] est 0&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">liste</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;liste[1] est 1&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;?&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Création et manipulation de listes avec la <a class="reference external" href="https://docs.python.org/fr/3/tutorial/datastructures.html#list-comprehensions">compréhension de liste</a> (<em>list comprehension</em>) :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">l2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Forme équivalente :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">l2</span><span class="p">])</span>
+<span class="c1"># [1, 2, 3, 2, 4, 6]</span>
+</pre></div>
+</div>
+<p>Autres exemples :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l1</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">l2</span><span class="p">])</span>
+<span class="c1"># [2, 4, 6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">([</span><span class="n">i</span> <span class="o">%</span> <span class="mi">3</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="n">x</span> <span class="o">*</span> <span class="n">y</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">l1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">l2</span><span class="p">]]))</span>
+<span class="c1"># True</span>
+</pre></div>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question :</p>
+<p>Expliquez ce que fait chacun de ces exemples.</p>
+</div>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question :</p>
+<p>À partir des listes suivantes de mois et respectivement de nombres de jours correspondants, construisez un dictionnaire qui associe à chaque mois son nombre de jours (années non bisextiles).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mois</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;janvier&#39;</span><span class="p">,</span><span class="s1">&#39;février&#39;</span><span class="p">,</span><span class="s1">&#39;mars&#39;</span><span class="p">,</span><span class="s1">&#39;avril&#39;</span><span class="p">,</span><span class="s1">&#39;mai&#39;</span><span class="p">,</span><span class="s1">&#39;juin&#39;</span><span class="p">,</span><span class="s1">&#39;juillet&#39;</span><span class="p">,</span><span class="s1">&#39;août&#39;</span><span class="p">,</span><span class="s1">&#39;septembre&#39;</span><span class="p">,</span><span class="s1">&#39;octobre&#39;</span><span class="p">,</span><span class="s1">&#39;novembre&#39;</span><span class="p">,</span><span class="s1">&#39;décembre&#39;</span><span class="p">]</span>
+<span class="n">nbJours</span> <span class="o">=</span> <span class="p">[</span><span class="mi">31</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">31</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="fonctions-fonctions-anonymes">
+<span id="fonctions"></span><h2>Fonctions, fonctions anonymes<a class="headerlink" href="#fonctions-fonctions-anonymes" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La définition d’une fonction commence par <code class="docutils literal notranslate"><span class="pre">def</span></code>. Une fonction peut avoir zéro, un ou plusieurs arguments. Les arguments optionnels possèdent des valeurs par défaut. Une fonction peut retourner une valeur (ou un tuple, donc plusieurs valeurs) avec <code class="docutils literal notranslate"><span class="pre">return</span></code> ou non.</p>
+<p>Le premier exemple ci-dessous devrait aider à comprendre la transmission des paramètres :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonction</span><span class="p">(</span><span class="n">immuable</span><span class="p">,</span> <span class="n">modifiable</span><span class="p">,</span> <span class="n">optionnel</span><span class="o">=</span><span class="s1">&#39;valeur par défaut&#39;</span><span class="p">):</span>
+    <span class="n">immuable</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span>
+    <span class="n">modifiable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">immuable</span><span class="p">,</span> <span class="n">modifiable</span><span class="p">,</span> <span class="n">optionnel</span><span class="p">)</span>
+
+<span class="n">chaine1</span> <span class="o">=</span> <span class="s1">&#39;old&#39;</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">chaine2</span> <span class="o">=</span> <span class="s1">&#39;nouvelle valeur&#39;</span>
+<span class="n">fonction</span><span class="p">(</span><span class="n">chaine1</span><span class="p">,</span> <span class="n">liste</span><span class="p">,</span> <span class="n">chaine2</span><span class="p">)</span>
+<span class="c1"># new [1, 2, 4] nouvelle valeur</span>
+</pre></div>
+</div>
+<p>Notre variable <code class="docutils literal notranslate"><span class="pre">liste</span></code> a été modifiée à l’intérieur de la fonction mais pas la variable <code class="docutils literal notranslate"><span class="pre">chaine1</span></code> car les chaînes de caractère sont immuables :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
+<span class="c1"># [1, 2, 4]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chaine1</span><span class="p">)</span>
+<span class="c1"># &#39;old&#39;</span>
+<span class="n">fonction</span><span class="p">(</span><span class="n">chaine1</span><span class="p">,</span> <span class="n">liste</span><span class="p">)</span>
+<span class="c1"># new [1, 2, 4, 4] valeur par défaut</span>
+</pre></div>
+</div>
+<p>L’utilisation de <code class="docutils literal notranslate"><span class="pre">print</span></code> plutôt que l’appel direct permet de voir que la fonction ne retourne rien (<code class="docutils literal notranslate"><span class="pre">None</span></code>) :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fonction</span><span class="p">(</span><span class="n">chaine1</span><span class="p">,</span> <span class="n">liste</span><span class="p">,</span> <span class="n">chaine2</span><span class="p">))</span>
+<span class="c1"># new [1, 2, 4, 4, 4] nouvelle valeur</span>
+<span class="c1"># None</span>
+</pre></div>
+</div>
+<p>Ici, <code class="docutils literal notranslate"><span class="pre">liste</span></code> est un nom associé à un objet liste, donc modifiable ; à chaque appel, la fonction ajoute un élément à cet objet. Le nom <code class="docutils literal notranslate"><span class="pre">chaine1</span></code> est associé à un objet de type chaîne de caractères, donc immuable ; dans la fonction, le nom <code class="docutils literal notranslate"><span class="pre">chaine1</span></code> est <strong>localement</strong> associé à un nouvel objet, la chaîne <code class="docutils literal notranslate"><span class="pre">'new'</span></code>, mais cela n’a pas d’impact sur l’association de <code class="docutils literal notranslate"><span class="pre">chaine1</span></code> à l’objet <code class="docutils literal notranslate"><span class="pre">'old'</span></code> à l’extérieur de la fonction.</p>
+<p>L’exemple suivant montre une fonction qui retourne un tuple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fonction2</span><span class="p">(</span><span class="n">immuable</span><span class="p">,</span> <span class="n">modifiable</span><span class="p">,</span> <span class="n">optionnel</span><span class="o">=</span><span class="s1">&#39;valeur par défaut&#39;</span><span class="p">):</span>
+    <span class="n">immuable</span> <span class="o">=</span> <span class="s1">&#39;new&#39;</span>
+    <span class="n">modifiable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">immuable</span><span class="p">,</span> <span class="n">modifiable</span><span class="p">,</span> <span class="n">optionnel</span>
+
+<span class="n">chaine1</span> <span class="o">=</span> <span class="s1">&#39;old&#39;</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">chaine2</span> <span class="o">=</span> <span class="s1">&#39;nouvelle valeur&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fonction2</span><span class="p">(</span><span class="n">chaine1</span><span class="p">,</span> <span class="n">liste</span><span class="p">,</span> <span class="n">chaine2</span><span class="p">))</span>
+<span class="c1"># (&#39;new&#39;, [1, 2, 4], &#39;nouvelle valeur&#39;)</span>
+</pre></div>
+</div>
+<p>Les fonctions lambda ou <a class="reference external" href="https://docs.python.org/fr/3/tutorial/controlflow.html#lambda-expressions">fonctions anonymes</a> comportent une seule instruction, par exemple :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fAdHoc</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fAdHoc</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="c1"># 5</span>
+</pre></div>
+</div>
+<p>Cette définition est une forme abrégée de</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fAdHoc</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">return</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Il n’est pas indispensable de donner un nom à une fonction lambda :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">)(</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># 10</span>
+</pre></div>
+</div>
+<p>Une fonction lambda sans nom est qualifiée d’anonyme.</p>
+</section>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Python propose un traitement standard des exceptions. L’exemple suivant indique la syntaxe à employer.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">autreFonction</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>  <span class="c1"># instruction susceptible de lever une exception</span>
+            <span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>  <span class="c1"># si l&#39;exception est levée</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Division par 0 !&#39;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>  <span class="c1"># sinon</span>
+            <span class="k">pass</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># exécuté après le bloc &quot;try&quot; et le</span>
+            <span class="c1">#  traitement des éventuelles erreurs</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;    fini...&#39;</span><span class="p">)</span>
+
+<span class="n">autreFonction</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">autreFonction</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="classes-et-heritage">
+<h2>Classes et héritage<a class="headerlink" href="#classes-et-heritage" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est utile mais pas indispensable de bien connaître la programmation objet pour bien suivre les travaux pratiques, ou pour faire le projet de l’UE RCP209.</p>
+<p>En Python, on peut définir des variables partagées par toutes les instances d’une classe. Aussi, l’héritage multiple est possible. La définition d’une classe a la forme suivante (n’entrez pas ceci dans l’interpréteur Python, ce n’est pas une définition complète) :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">NouvelleClasse</span><span class="p">():</span>
+    <span class="n">attribut_de_classe</span> <span class="o">=</span> <span class="o">...</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># constructeur</span>
+        <span class="c1"># ...</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span> <span class="nf">methode</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="n">arg3</span><span class="p">):</span>  <span class="c1"># methode de l&#39;objet</span>
+        <span class="c1"># ...</span>
+        <span class="k">pass</span>
+
+    <span class="c1"># ...</span>
+
+<span class="k">class</span> <span class="nc">NouvelleClasseHeritage</span><span class="p">(</span><span class="n">NouvelleClasse</span><span class="p">):</span>
+
+    <span class="c1"># ...</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Création d’une nouvelle instance de la classe :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">instanceNouvelleClasse</span> <span class="o">=</span> <span class="n">NouvelleClasse</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="entrees-et-sorties">
+<h2>Entrées et sorties<a class="headerlink" href="#entrees-et-sorties" title="Lien permanent vers ce titre">¶</a></h2>
+<p>La fonction native <code class="docutils literal notranslate"><span class="pre">open</span></code> permet d’ouvrir un flux de données depuis un fichier.</p>
+<p>Cette fonction prend deux arguments : un chemin vers le fichier et le mode de lecture (lecture, écriture, binaire, etc.).</p>
+<p>Exemple d’accès à un fichier texte :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ouverture du fichier en mode écriture (&#39;w&#39; pour &#39;write&#39;)</span>
+<span class="n">fichierTexte</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;texte.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">fichierTexte</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Mon texte à moi</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">fichierTexte</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="c1"># Ouverture du fichier en mode lecture</span>
+<span class="n">fichierTexte</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;texte.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fichierTexte</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="c1"># Mon texte à moi</span>
+<span class="n">fichierTexte</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>L’instruction <code class="docutils literal notranslate"><span class="pre">with</span></code> permet de ne pas avoir à fermer manuellement le fichier en utilisant un <a class="reference external" href="https://docs.python.org/fr/3/reference/compound_stmts.html?highlight=with#the-with-statement">gestionnaire de contexte</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># le mode &#39;a&#39; permet d&#39;ajouter des lignes sans écraser le fichier (&#39;append&#39;)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;texte.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichierTexte</span><span class="p">:</span>
+    <span class="n">fichierTexte</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Et une ligne de plus</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;texte.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fichierTexte</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fichierTexte</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+    <span class="c1"># Mon texte à moi</span>
+    <span class="c1"># Et une ligne de plus</span>
+</pre></div>
+</div>
+<p>Dans ces exemples, les fichiers sont ouverts dans le répertoire dans lequel Python a été lancé. Il est possible de spécifier le chemin avant le nom du fichier.</p>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question :</p>
+<p>Quelle conséquence a la suppression du second argument de la fonction <code class="docutils literal notranslate"><span class="pre">open</span></code> ?</p>
+</div>
+<p>Enfin, le module <code class="docutils literal notranslate"><span class="pre">pickle</span></code> permet de stocker des objets Python dans des fichiers binaires et de les lire.</p>
+<p>Utilisation d’un fichier binaire pour enregistrer ou lire des données/objets quelconques :</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="n">liste</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="s1">&#39;pi&#39;</span><span class="p">]</span>
+<span class="n">fichierBinaire</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;bin.dat&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span>
+<span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">liste</span><span class="p">,</span> <span class="n">fichierBinaire</span><span class="p">)</span>
+<span class="n">fichierBinaire</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="n">fichierBinaire</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;bin.dat&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span>
+<span class="n">listeIdentique</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fichierBinaire</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">listeIdentique</span><span class="p">)</span>
+<span class="c1"># [1, 3.14, &#39;pi&#39;]</span>
+</pre></div>
+</div>
+<p>Nous allons ensuite approfondir cette introduction en explorant les bibliothèques <a class="reference external" href="tpIntroductionScikitLearn.html">Numpy, Scipy, MatPlotLib et Scikit-learn</a>.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">rcp216</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Travaux pratiques - Introduction à Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#python-2-ou-python-3">Python 2 ou Python 3 ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#interpreteur-python">Interpréteur Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#documentation-aide-en-ligne-de-commande">Documentation, aide en ligne de commande</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#syntaxe">Syntaxe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#structures-de-controle">Structures de contrôle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fonctions-fonctions-anonymes">Fonctions, fonctions anonymes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exceptions">Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#classes-et-heritage">Classes et héritage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#entrees-et-sorties">Entrées et sorties</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../index.html" title="Chapitre précédent">Welcome to rcp216’s documentation!</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Recherche rapide</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Pascal Fares.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/intropy/tpIntroductionPython.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
